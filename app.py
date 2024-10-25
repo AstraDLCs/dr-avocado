@@ -9,7 +9,7 @@ import base64
 
 app = Flask(__name__)
 
-interpreter = tf.lite.Interpreter(model_path='./models/dr_palta_fv1.tflite')
+interpreter = tf.lite.Interpreter(model_path='./models/dr_palta_tfv3.tflite')
 interpreter.allocate_tensors()
 
 input_details = interpreter.get_input_details()
