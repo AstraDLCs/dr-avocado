@@ -16,7 +16,7 @@ input_details = interpreter.get_input_details()
 output_details = interpreter.get_output_details()
 
 
-with open('./models/dr_palta_fv1_class_names.json', 'r') as f:
+with open('./models/dr_palta_tfv3_class_names.json', 'r') as f:
     class_names = json.load(f)
 
 

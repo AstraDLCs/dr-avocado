@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dr Palta - Diagnóstico de Hojas</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
     <style>
       @keyframes typing {
         from {
@@ -39,7 +42,8 @@
         overflow: hidden;
         white-space: nowrap;
         display: inline-block;
-        animation: typing 2s steps(40, end), blink 0.5s step-end infinite alternate;
+        animation: typing 2s steps(40, end),
+          blink 0.5s step-end infinite alternate;
       }
 
       @keyframes blink {
@@ -47,69 +51,155 @@
           border-color: transparent;
         }
       }
+      #particles-js {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+      }
     </style>
   </head>
-  <body class="bg-gray-900 min-h-screen flex items-center justify-center p-4" style="background-image: url('/static/background-index-avocado.png'); background-size: cover; background-repeat: no-repeat">
-    <div class="max-w-4xl w-full rounded-xl shadow-lg p-6 sm:p-8" style="background-color: rgba(255, 255, 255, 0.3)">
-      <h1 class="text-4xl font-semibold text-center mb-6 text-black-400" style="font-weight: bold">Dr. Paltas - Diagnóstico de Hojas</h1>
+  <body
+    class="bg-gray-900 min-h-screen flex items-center justify-center p-4"
+    style="
+      background-image: url('/static/background-index-avocado.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+    "
+  >
+    <div
+      class="max-w-4xl w-full rounded-xl shadow-lg p-6 sm:p-8"
+      style="background-color: rgba(255, 255, 255, 0.3)"
+    >
+      <h1
+        class="text-4xl font-semibold text-center mb-6 text-black-400"
+        style="font-weight: bold"
+      >
+        Dr. Paltas - Diagnóstico de Hojas
+      </h1>
 
-      <form id="upload-form" enctype="multipart/form-data" class="flex flex-col items-center mb-6">
-        <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-3 mb-4 w-full">
-          <button type="button" class="bg-black hover:bg-gray-800 text-white py-3 px-4 rounded-lg flex justify-center items-center w-full sm:w-1/2 transition duration-300" onclick="triggerFileInput()"><i class="fas fa-camera mr-2"></i> Usar Cámara</button>
-          <button type="button" class="bg-black hover:bg-gray-800 text-white py-3 px-4 rounded-lg flex justify-center items-center w-full sm:w-1/2 transition duration-300" onclick="triggerFileUpload()"><i class="fas fa-upload mr-2"></i> Subir Archivos</button>
+      <form
+        id="upload-form"
+        enctype="multipart/form-data"
+        class="flex flex-col items-center mb-6"
+      >
+        <div
+          class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-3 mb-4 w-full"
+        >
+          <button
+            type="button"
+            class="bg-black hover:bg-gray-800 text-white py-3 px-4 rounded-lg flex justify-center items-center w-full sm:w-1/2 transition duration-300"
+            onclick="triggerFileInput()"
+          >
+            <i class="fas fa-camera mr-2"></i> Usar Cámara
+          </button>
+          <button
+            type="button"
+            class="bg-black hover:bg-gray-800 text-white py-3 px-4 rounded-lg flex justify-center items-center w-full sm:w-1/2 transition duration-300"
+            onclick="triggerFileUpload()"
+          >
+            <i class="fas fa-upload mr-2"></i> Subir Archivos
+          </button>
         </div>
 
-        <input type="file" id="file-input" name="file" accept="image/*" capture="camera" class="hidden" onchange="resetDiagnosis(); showImage(event)" />
-        <input type="file" id="upload-input" name="file-upload" accept="image/*" class="hidden" onchange="resetDiagnosis(); showImage(event)" />
+        <input
+          type="file"
+          id="file-input"
+          name="file"
+          accept="image/*"
+          capture="camera"
+          class="hidden"
+          onchange="resetDiagnosis(); showImage(event)"
+        />
+        <input
+          type="file"
+          id="upload-input"
+          name="file-upload"
+          accept="image/*"
+          class="hidden"
+          onchange="resetDiagnosis(); showImage(event)"
+        />
 
-        <button type="button" class="bg-black hover:bg-gray-800 text-white py-3 px-4 rounded-lg w-full flex justify-center items-center transition duration-300" onclick="uploadImage(); scrollToResults()"><i class="fas fa-vial mr-2"></i> Diagnosticar</button>
+        <button
+          type="button"
+          class="bg-black hover:bg-gray-800 text-white py-3 px-4 rounded-lg w-full flex justify-center items-center transition duration-300"
+          onclick="uploadImage(); scrollToResults()"
+        >
+          <i class="fas fa-vial mr-2"></i> Diagnosticar
+        </button>
 
-        <img id="image-preview" class="hidden mt-6 border border-gray-700 rounded-lg shadow-md" alt="Imagen seleccionada" />
+        <img
+          id="image-preview"
+          class="hidden mt-6 border border-gray-700 rounded-lg shadow-md"
+          alt="Imagen seleccionada"
+        />
         <p id="error-message" class="text-red-500 mt-2"></p>
       </form>
 
-      <div id="diagnosis-result" class="bg-gray-600 mt-6 p-4 rounded-lg shadow-md text-center text-lg hidden text-white"></div>
+      <div
+        id="diagnosis-result"
+        class="bg-gray-600 mt-6 p-4 rounded-lg shadow-md text-center text-lg hidden text-white"
+      ></div>
       <div id="diagnostics-info" class="mt-6 hidden text-black">
         <h2 class="text-xl font-semibold" id="info-title"></h2>
         <p id="info-description" class="mt-2"></p>
         <h3 class="font-semibold mt-4">Tratamiento:</h3>
         <p id="info-treatment"></p>
-        <img id="info-image" class="mt-4 rounded-lg fade-in-image" alt="Imagen diagnóstico" />
+        <img
+          id="info-image"
+          class="mt-4 rounded-lg fade-in-image"
+          alt="Imagen diagnóstico"
+        />
       </div>
     </div>
-
+    <div id="particles-js"></div>
     <script>
       const diagnostics_info = {
         cercospora_purpurea: {
           title: "Cercospora purpurea",
-          description: "La cercospora purpurea es una enfermedad fúngica que afecta las hojas de los árboles de palta. Se caracteriza por la aparición de manchas circulares de color púrpura que pueden volverse marrones y secas en el centro. Estas manchas suelen rodearse de un halo amarillo y, si no se trata, puede llevar a la defoliación de las plantas.",
+          description:
+            "La cercospora purpurea es una enfermedad fúngica que afecta las hojas de los árboles de palta. Se caracteriza por la aparición de manchas circulares de color púrpura que pueden volverse marrones y secas en el centro. Estas manchas suelen rodearse de un halo amarillo y, si no se trata, puede llevar a la defoliación de las plantas.",
           treatment:
             "Para el control de la cercospora, se pueden aplicar fungicidas que contengan mancozeb, clorotalonil o metalaxyl. Se recomienda aplicar el fungicida al aparecer la enfermedad y luego pulverizar con otro fungicida. También se pueden utilizar productos como SYSTHANE (miclobutanil) y HERITAGE (azoxistrobina). Para prevenir la diseminación del hongo, es importante podar el cultivo antes de la etapa reproductiva y sellar las heridas con pintura a base de aceite. La cercospora es una enfermedad común en la remolacha y la acelga plateada, pero puede ser un problema significativo en cultivos destinados a la producción de hojas tiernas.",
           image: "https://www.agrosavia.co/media/9714/diego-navarro-1.jpg",
         },
         acaro_cristalino: {
           title: "Ácaro Cristalino",
-          description: "Los ácaros cristalinos (Oligonychus perseae) son plagas que atacan las hojas, causando daños que pueden afectar la fotosíntesis y la salud general del árbol. Los síntomas incluyen un bronceado o aspecto cristalino en la superficie de las hojas, junto con decoloración y manchas plateadas que pueden extenderse a las nervaduras. En casos graves, puede haber pérdida de hojas.",
-          treatment: "Aplicar acaricidas específicos para controlar la población de ácaros. Realizar un monitoreo constante para detectar la plaga a tiempo y prevenir daños mayores. También se recomienda favorecer la presencia de depredadores naturales como ácaros depredadores para ayudar en el control biológico.",
-          image: "https://agrotrapiche.com/wp-content/uploads/2023/06/ilustracion-3-dano-en-hoja-producido-por-arana-cristalina-1024x1024.png",
+          description:
+            "Los ácaros cristalinos (Oligonychus perseae) son plagas que atacan las hojas, causando daños que pueden afectar la fotosíntesis y la salud general del árbol. Los síntomas incluyen un bronceado o aspecto cristalino en la superficie de las hojas, junto con decoloración y manchas plateadas que pueden extenderse a las nervaduras. En casos graves, puede haber pérdida de hojas.",
+          treatment:
+            "Aplicar acaricidas específicos para controlar la población de ácaros. Realizar un monitoreo constante para detectar la plaga a tiempo y prevenir daños mayores. También se recomienda favorecer la presencia de depredadores naturales como ácaros depredadores para ayudar en el control biológico.",
+          image:
+            "https://agrotrapiche.com/wp-content/uploads/2023/06/ilustracion-3-dano-en-hoja-producido-por-arana-cristalina-1024x1024.png",
         },
         "ara\u00f1a_marron": {
           title: "Araña Marrón",
-          description: "La araña marrón (Tetranychus urticae) es una plaga que puede afectar las hojas de la palta, causando decoloración y debilitamiento. Los síntomas incluyen hojas con manchas amarillentas que eventualmente se tornan marrones, y telarañas finas visibles en la parte inferior de las hojas. En infestaciones severas, puede producirse caída prematura de hojas.",
-          treatment: "Uso de acaricidas específicos o soluciones naturales como extracto de neem para controlar la plaga. Es importante podar las partes afectadas para limitar la propagación. Incrementar la ventilación y reducir la humedad en el área de cultivo también ayudará a disminuir el ambiente favorable para la plaga.",
-          image: "https://i0.wp.com/www.agrohuerto.com/wp-content/uploads/2021/06/danos-olygonichus-punicae-600.jpg?resize=600%2C408&ssl=1",
+          description:
+            "La araña marrón (Tetranychus urticae) es una plaga que puede afectar las hojas de la palta, causando decoloración y debilitamiento. Los síntomas incluyen hojas con manchas amarillentas que eventualmente se tornan marrones, y telarañas finas visibles en la parte inferior de las hojas. En infestaciones severas, puede producirse caída prematura de hojas.",
+          treatment:
+            "Uso de acaricidas específicos o soluciones naturales como extracto de neem para controlar la plaga. Es importante podar las partes afectadas para limitar la propagación. Incrementar la ventilación y reducir la humedad en el área de cultivo también ayudará a disminuir el ambiente favorable para la plaga.",
+          image:
+            "https://i0.wp.com/www.agrohuerto.com/wp-content/uploads/2021/06/danos-olygonichus-punicae-600.jpg?resize=600%2C408&ssl=1",
         },
         hoja_saludable: {
           title: "Hoja Saludable",
-          description: "Una hoja saludable representa un estado óptimo sin presencia de enfermedades o plagas. Se caracteriza por un color verde uniforme y brillante, sin manchas, deformaciones o decoloraciones. Un buen desarrollo y ausencia de signos de daño en la superficie son indicativos de la salud de la planta.",
-          treatment: "Para mantener la salud de las hojas, es recomendable realizar una fertilización adecuada para asegurar un crecimiento saludable. El riego moderado es crucial para evitar problemas de humedad excesiva o sequía. Además, se sugiere un monitoreo regular para detectar a tiempo cualquier signo de plaga o enfermedad.",
-          image: "https://primicia.com.ve/wp-content/uploads/2021/09/avocado-fruit_crop1627757854886.jpg_976912859.jpg",
+          description:
+            "Una hoja saludable representa un estado óptimo sin presencia de enfermedades o plagas. Se caracteriza por un color verde uniforme y brillante, sin manchas, deformaciones o decoloraciones. Un buen desarrollo y ausencia de signos de daño en la superficie son indicativos de la salud de la planta.",
+          treatment:
+            "Para mantener la salud de las hojas, es recomendable realizar una fertilización adecuada para asegurar un crecimiento saludable. El riego moderado es crucial para evitar problemas de humedad excesiva o sequía. Además, se sugiere un monitoreo regular para detectar a tiempo cualquier signo de plaga o enfermedad.",
+          image:
+            "https://primicia.com.ve/wp-content/uploads/2021/09/avocado-fruit_crop1627757854886.jpg_976912859.jpg",
         },
         trips_de_hojas: {
           title: "Trips de Hojas",
-          description: "Los trips (Frankliniella occidentalis) son pequeños insectos que perforan las hojas y se alimentan de su savia, causando daños visibles en la superficie. Los síntomas incluyen pequeñas manchas plateadas o grises en la superficie de las hojas, arrugado o deformación de las mismas, y presencia de insectos diminutos y alargados en el envés de las hojas.",
-          treatment: "Aplicar insecticidas específicos para trips, preferiblemente en etapas tempranas de infestación. El uso de trampas adhesivas también es eficaz para monitorear y controlar la población de trips. Fomentar el crecimiento de plantas que atraigan depredadores naturales como mariquitas puede ayudar en el control biológico de estos insectos.",
-          image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0Fx6ZqfDMSrQLAtwYczWTXesemY8vnhEEKA&s",
+          description:
+            "Los trips (Frankliniella occidentalis) son pequeños insectos que perforan las hojas y se alimentan de su savia, causando daños visibles en la superficie. Los síntomas incluyen pequeñas manchas plateadas o grises en la superficie de las hojas, arrugado o deformación de las mismas, y presencia de insectos diminutos y alargados en el envés de las hojas.",
+          treatment:
+            "Aplicar insecticidas específicos para trips, preferiblemente en etapas tempranas de infestación. El uso de trampas adhesivas también es eficaz para monitorear y controlar la población de trips. Fomentar el crecimiento de plantas que atraigan depredadores naturales como mariquitas puede ayudar en el control biológico de estos insectos.",
+          image:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0Fx6ZqfDMSrQLAtwYczWTXesemY8vnhEEKA&s",
         },
       };
 
@@ -147,10 +237,13 @@
       }
 
       function uploadImage() {
-        const fileInput = document.getElementById("file-input").files[0] || document.getElementById("upload-input").files[0];
+        const fileInput =
+          document.getElementById("file-input").files[0] ||
+          document.getElementById("upload-input").files[0];
 
         if (!fileInput) {
-          document.getElementById("error-message").textContent = "Por favor, selecciona una imagen primero.";
+          document.getElementById("error-message").textContent =
+            "Por favor, selecciona una imagen primero.";
           return;
         }
 
@@ -167,11 +260,13 @@
               showTypingEffect(data.class_name);
               showDiagnosticsInfo(data.class_name);
             } else {
-              document.getElementById("error-message").textContent = "Error al procesar la imagen.";
+              document.getElementById("error-message").textContent =
+                "Error al procesar la imagen.";
             }
           })
           .catch((error) => {
-            document.getElementById("error-message").textContent = "Error de conexión: " + error;
+            document.getElementById("error-message").textContent =
+              "Error de conexión: " + error;
           });
       }
 
@@ -186,7 +281,8 @@
       }
 
       function showDiagnosticsInfo(className) {
-        const info = diagnostics_info[className] || diagnostics_info["hoja_saludable"];
+        const info =
+          diagnostics_info[className] || diagnostics_info["hoja_saludable"];
         const infoTitle = document.getElementById("info-title");
         const infoDescription = document.getElementById("info-description");
         const infoTreatment = document.getElementById("info-treatment");
@@ -209,5 +305,7 @@
         });
       }
     </script>
+    <script src="{{ url_for('static', filename='js/particles.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
   </body>
 </html>
