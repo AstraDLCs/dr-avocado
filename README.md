@@ -14,8 +14,31 @@ continuación:
    Primero necesitas instalar todas las bibliotecas requeridas para que el proyecto funcione correctamente. Para
 hacer esto, utiliza el siguiente comando que te llevará a través del proceso de instalación rápido y eficiente:
 
+   **instalar librerias (recomendado)**
     ```bash
     pip install -r requirements.txt
+    ```
+    o tambien puedes instalarlo de forma separada
+
+   **instalar tensorflow**
+    ```bash
+    pip install tensorflow
+    ```
+    **instalar numpy**
+    ```bash
+    pip install numpy
+    ```
+    **instalar openCV**
+    ```bash
+    pip install opencv-python
+    ```
+    **instalar flask**
+    ```bash
+    pip install flask
+    ```
+    **instalar pillow**
+    ```bash
+    pip install Pillow
     ```
 
    Asegúrate de tener Pip previamente instalado en tu sistema. Si no lo tienes, puedes descargarlo
