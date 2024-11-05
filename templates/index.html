@@ -71,7 +71,7 @@
   >
     <div
       class="max-w-4xl w-full rounded-xl shadow-lg p-6 sm:p-8"
-      style="background-color: rgba(255, 255, 255, 0.3)"
+      style="background-color: rgba(255, 255, 255, 0.35)"
     >
       <h1
         class="text-4xl font-semibold text-center mb-6 text-black-400"
@@ -79,6 +79,38 @@
       >
         Dr. Paltas - Diagnóstico de Hojas
       </h1>
+      <form action="/model" method="POST" class="mb-4">
+        <label
+          for="modelo"
+          class="block text-lg font-semibold text-gray-800 mb-2"
+        >Elige un modelo:</label>
+        <select
+          name="modelo"
+          id="modelo"
+          class="block w-full p-2 rounded-lg border border-gray-300 bg-black text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+        >
+          <option value="multiclasificacion" {% if respuesta == "Modelo de Multiclasificación." %}selected{% endif %}>Multiclasificacion</option>
+          <option value="binaria" {% if respuesta == "Modelo de Clasificación binaria." %}selected{% endif %}>Clasificación binaria</option>
+        </select>
+
+        <button
+          type="submit"
+          class="mt-4 bg-black hover:bg-gray-800 text-white py-2 px-4 rounded-lg transition duration-300"
+        >
+          Cargar
+        </button>
+      </form>
+      
+
+      {% if respuesta %}
+        <div
+          class="mt-6 mb-6 p-4 bg-black border border-gray-700 text-white rounded-lg shadow-md"
+        >
+          <h2 class="text-xl font-semibold m-4">Modelo cargado:</h2>
+          <p class="mt-2">{{ respuesta }}</p>
+        </div>
+      {% endif %}
+
 
       <form
         id="upload-form"
@@ -149,15 +181,16 @@
         <p id="info-treatment"></p>
         <img
           id="info-image"
-          class="mt-4 rounded-lg fade-in-image"
+          class="mt-4 rounded-lg fade-in-image mx-auto max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg"
           alt="Imagen diagnóstico"
         />
+
       </div>
     </div>
     <div id="particles-js"></div>
     <script>
       const diagnostics_info = {
-        cercospora_purpurea: {
+        pseudocercospora_purpurea: {
           title: "Cercospora purpurea",
           description:
             "La cercospora purpurea es una enfermedad fúngica que afecta las hojas de los árboles de palta. Se caracteriza por la aparición de manchas circulares de color púrpura que pueden volverse marrones y secas en el centro. Estas manchas suelen rodearse de un halo amarillo y, si no se trata, puede llevar a la defoliación de las plantas.",
@@ -200,6 +233,15 @@
             "Aplicar insecticidas específicos para trips, preferiblemente en etapas tempranas de infestación. El uso de trampas adhesivas también es eficaz para monitorear y controlar la población de trips. Fomentar el crecimiento de plantas que atraigan depredadores naturales como mariquitas puede ayudar en el control biológico de estos insectos.",
           image:
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0Fx6ZqfDMSrQLAtwYczWTXesemY8vnhEEKA&s",
+        },
+        no_pseudocercospora_purpurea: {
+          title: "No se ha detectado pseudocercospora purpurea",
+          description:
+            "En esta imagen no se ha detectado la presencia de la enfermedad de la cercospora purpurea.",
+          treatment:
+            "Debido a que no se ha detectado pseudocercospora purpurea, no hay tratamiento que se pueda recomendar",
+          image:
+            "https://i.gifer.com/origin/ca/ca3b8817d63ff9949203325f307e24ec_w200.gif",
         },
       };
 
