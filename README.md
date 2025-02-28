@@ -1,3 +1,6 @@
+### EL PROYECTO DE CURSO SE ENCUENTRA EN: https://github.com/AstraDLCs/Chatbot-TurismoVerde
+### SUCEDIO UNA CONFUSION AL SUBIR LA DIRECCION DEL REPOSITORIO
+
 ### Proyecto Dr-Avocado (Detección de Enfermedades en Palta utilizando Redes NeuronalesConvolucionales)
 
 #### Introducción
