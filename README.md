@@ -17,7 +17,7 @@ continuación:
    Primero necesitas instalar todas las bibliotecas requeridas para que el proyecto funcione correctamente. Para
 hacer esto, utiliza el siguiente comando que te llevará a través del proceso de instalación rápido y eficiente:
 
-   **instalar librerias (recomendado)**
+   **instalar librerias (no lo hagan, por ahora falla)**
     ```bash
     pip install -r requirements.txt
     ```
