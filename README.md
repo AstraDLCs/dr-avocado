@@ -1,68 +1,44 @@
-### EL PROYECTO DE CURSO SE ENCUENTRA EN: https://github.com/AstraDLCs/Chatbot-TurismoVerde
-### SUCEDIO UNA CONFUSION AL SUBIR LA DIRECCION DEL REPOSITORIO
+# Chatbot de Turismo Verde
 
-### Proyecto Dr-Avocado (Detección de Enfermedades en Palta utilizando Redes NeuronalesConvolucionales)
+El **Chatbot de Turismo Verde** es un asesor entusiasta y persuasivo cuya única función es vender reservas para Turismo Verde. Con un lenguaje amigable, lleno de bromas y expresiones naturales, el bot guía al usuario en el proceso de consulta de ciudades y lugares turísticos, registro de usuario, verificación de credenciales y realización de reservas. Utiliza herramientas autorizadas que interactúan con una base de datos SQLite para asegurar una experiencia coherente y segura.
 
-#### Introducción
+## Instalación
+1. **Clonar el repositorio:**  
+    Clona el repositorio con el siguiente codigo:
+   ```bash
+   git clone https://github.com/AstraDLCs/Chatbot-TurismoVerde.git
+   ```
 
-El Proyecto Dr-Avocado esta diseñado específicamente para detectar enfermedades y patógenos, con un enfoque principal en la cercospora purpurea, que afecta las hojas de palta.
-Esta Red Neuronal Convolucional (CNN) se creará para contribuir a la agricultura, permitiendo una diagnosis temprana y precisa que sea crucial para la producción sostenible y segura del consumidor final.
-
-#### Instalación
-
-Para ejecutar Dr-Avocado en tu entorno de desarrollo local con Python 3.x en Windows, sigue los pasos a
-continuación:
-
-1. **Instalar las Dependencias**
-   Primero necesitas instalar todas las bibliotecas requeridas para que el proyecto funcione correctamente. Para
-hacer esto, utiliza el siguiente comando que te llevará a través del proceso de instalación rápido y eficiente:
-
-   **instalar librerias (no lo hagan, por ahora falla)**
-    ```bash
-    pip install -r requirements.txt
-    ```
-    o tambien puedes instalarlo de forma separada
-
-   **instalar tensorflow**
-    ```bash
-    pip install tensorflow
-    ```
-    **instalar numpy**
-    ```bash
-    pip install numpy
-    ```
-    **instalar openCV**
-    ```bash
-    pip install opencv-python
-    ```
-    **instalar flask**
-    ```bash
-    pip install flask
-    ```
-    **instalar pillow**
-    ```bash
-    pip install Pillow
-    ```
-
-   Asegúrate de tener Pip previamente instalado en tu sistema. Si no lo tienes, puedes descargarlo
-[aquí](https://pip.pypa.io/en/stable/).
-
-2. **Configurar el Entorno de Ejecución**
-   Una vez que hayas instalado las dependencias necesarias, inicies tu entorno de ejecución utilizando los
-siguientes comandos:
+2. **Moverse a la carpeta del proyecto:** 
 
     ```bash
-    flask run --host=0.0.0.0 --port=5000
-    ```
+   cd Chatbot-TurismoVerde
+   ```
 
-   Esto configurará el entorno para que Dr-Avocado esté disponible en cualquier dispositivo conectado a tu red
-local (usando la dirección IP 0.0.0.0) y escuchará en el puerto 5000, lo cual te permite acceder fácilmente desde
-navegadores web o interacciones similares.
+3. **Resolver las dependencias:**  
+   Instala todas las dependencias necesarias ejecutando:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-#### Configuración Preliminar
+4. **Configurar la base de datos:**  
+   Ejecuta el archivo `createdb.py` para crear la base de datos y cargar los datos de prueba:
+   ```bash
+   python createdb.py
+   ```
 
-Antes de comenzar con las pruebas y ajustes del modelo, es importante tener los siguientes elementos configurados:
+5. **Ejecutar el chatbot:**  
+   Una vez creada la base de datos, inicia el chatbot ejecutando:
+   ```bash
+   python chatbot.py
+   ```
 
-- Python instalado en tu sistema y Pip funcionando correctamente.
-- (Opcional-recomendado) Un entorno virtual para el proyecto (si no tienes uno ya creado, puedes hacerlo ejecutando `python -m venv
-avocadoenv`).
+## Uso
+
+Al iniciar el chatbot, este solicitará al usuario su nombre de usuario y contraseña para verificar sus credenciales. Si el usuario no está registrado, se le sugerirá registrarse. Posteriormente, el chatbot utilizará las herramientas autorizadas para:
+
+- Consultar la lista de ciudades y lugares turísticos.
+- Registrar nuevos usuarios.
+- Crear reservas y consultar las reservas realizadas.
+
+¡Disfruta de una experiencia interactiva y natural con el Chatbot de Turismo Verde!
