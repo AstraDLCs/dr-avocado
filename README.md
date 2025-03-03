@@ -1,5 +1,6 @@
 # Chatbot de Turismo Verde
 sucedio un error al subir el repositorio al blackboard, por favor usar este repositorio: https://github.com/AstraDLCs/Chatbot-TurismoVerde
+
 El **Chatbot de Turismo Verde** es un asesor entusiasta y persuasivo cuya única función es vender reservas para Turismo Verde. Con un lenguaje amigable, lleno de bromas y expresiones naturales, el bot guía al usuario en el proceso de consulta de ciudades y lugares turísticos, registro de usuario, verificación de credenciales y realización de reservas. Utiliza herramientas autorizadas que interactúan con una base de datos SQLite para asegurar una experiencia coherente y segura.
 
 ## Instalación
