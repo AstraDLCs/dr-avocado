@@ -13,13 +13,13 @@ El **Chatbot de Turismo Verde** es un asesor entusiasta y persuasivo cuya única
 1. **Clonar el repositorio:**  
     Clona el repositorio con el siguiente codigo:
    ```bash
-   git clone https://github.com/AstraDLCs/Chatbot-TurismoVerde.git
+   git clone https://github.com/AstraDLCs/dr-avocado.git
    ```
 
 2. **Moverse a la carpeta del proyecto:** 
 
     ```bash
-   cd Chatbot-TurismoVerde
+   cd dr-avocado
    ```
 
 3. **Resolver las dependencias:**  
